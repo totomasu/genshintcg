@@ -347,7 +347,7 @@ def multithread_func(l,repeat,evaluation_values):
 def wrap_multithread_func(args):
     return multithread_func(*args)
 
-def simulate(repeat,first_roll,evaluation_values):
+def simulate(repeat,evaluation_values,first_roll):
     """
     サイコロを振りなおす時の残すサイコロのパターン全てでそれぞれ試行回数分サイコロを振りなおす。
     サイコロのパターンに評価値をつけ、マッチする最も評価値の高いパターンの評価値の平均値と、評価値を設定したサイコロのパターンを満たす確率を出力する。
@@ -357,10 +357,10 @@ def simulate(repeat,first_roll,evaluation_values):
     ----------
     repeat : int
         試行回数
-    first_roll : dict
-        1回目のダイスロールでのサイコロ
     evaluation_values : dict
         それぞれのパターンの評価値
+    first_roll : dict
+        1回目のダイスロールでのサイコロ
     """
     d = Dice()
     for i in first_roll:
@@ -449,6 +449,6 @@ if __name__ == "__main__":
         'Hydro2Dendro2':6
     }
     
-    #simulate(10000,['Geo','Geo','Hydro','Cryo','Cryo','Cryo','Anemo','Dendro'],e1)
-    #simulate(10000,['Omni','Hydro','Electro','Electro','Geo','Geo','Geo','Dendro'],e2)
-    simulate_random(20000,e1)
+    simulate(10000,e1,['Geo','Geo','Hydro','Cryo','Cryo','Cryo','Anemo','Dendro'])
+    # simulate(10000,e2,['Omni','Hydro','Electro','Electro','Geo','Geo','Geo','Dendro'])
+    # simulate_random(20000,e1)
